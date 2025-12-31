@@ -149,27 +149,101 @@
         }
 
         .greeting {
-            font-size: 48px;
-            margin: 30px 0;
-            animation: slideInRight 2s ease-out;
-            font-weight: bold;
+            font-size: 72px;
+            margin: 40px 0 20px 0;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
+            background: linear-gradient(45deg, 
+                #FFD700 0%, 
+                #FFA500 25%, 
+                #FFD700 50%, 
+                #FFA500 75%, 
+                #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
             text-shadow: 
-                2px 2px 0px #FF6B6B,
-                4px 4px 0px #4ECDC4,
-                6px 6px 0px #45B7D1,
-                8px 8px 0px #FFA07A,
-                10px 10px 20px rgba(0, 0, 0, 0.5);
-            animation: float3D 3s ease-in-out infinite, slideInRight 2s ease-out;
+                0 0 10px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.6),
+                0 0 30px rgba(255, 215, 0, 0.4),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: goldShine 3s linear infinite, float3D 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+            position: relative;
+        }
+
+        @keyframes goldShine {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
         }
 
         @keyframes float3D {
             0%, 100% {
-                transform: translateY(0px) rotateX(0deg);
+                transform: translateY(0px);
             }
             50% {
-                transform: translateY(-20px) rotateX(10deg);
+                transform: translateY(-15px);
+            }
+        }
+
+        .year-display {
+            font-size: 96px;
+            font-weight: 900;
+            margin: 30px 0;
+            letter-spacing: 15px;
+            background: linear-gradient(45deg, 
+                #FFD700 0%, 
+                #FFA500 25%, 
+                #FFD700 50%, 
+                #FFA500 75%, 
+                #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.9),
+                0 0 40px rgba(255, 215, 0, 0.7),
+                0 0 60px rgba(255, 215, 0, 0.5),
+                3px 3px 6px rgba(0, 0, 0, 0.9);
+            animation: goldShine 3s linear infinite;
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .year-digit {
+            display: inline-block;
+            position: relative;
+        }
+
+        .year-digit.changing {
+            animation: flipNumber 2s ease-in-out;
+        }
+
+        @keyframes flipNumber {
+            0% {
+                transform: rotateY(0deg) scale(1);
+            }
+            25% {
+                transform: rotateY(90deg) scale(0.8);
+            }
+            50% {
+                transform: rotateY(180deg) scale(0.6);
+            }
+            75% {
+                transform: rotateY(270deg) scale(0.8);
+            }
+            100% {
+                transform: rotateY(360deg) scale(1);
             }
         }
 
@@ -254,44 +328,6 @@
             animation: sparkle 1.5s infinite;
         }
 
-        /* Glitter text effect */
-        .glitter {
-            display: inline-block;
-            position: relative;
-            background: linear-gradient(90deg, #ffffff 0%, #FFD700 20%, #FF6B6B 40%, #4ECDC4 60%, #ffffff 100%);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            animation: glitterMove 3s linear infinite;
-        }
-
-        .glitter::after {
-            content: '';
-            position: absolute;
-            left: -60%;
-            top: 0;
-            width: 220%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg);
-            animation: shimmer 2s linear infinite;
-            mix-blend-mode: screen;
-            pointer-events: none;
-        }
-
-        @keyframes glitterMove {
-            0% { background-position: 0% 0%; }
-            100% { background-position: -200% 0%; }
-        }
-
-        @keyframes shimmer {
-            0% { left: -60%; opacity: 0; }
-            30% { opacity: 1; }
-            100% { left: 160%; opacity: 0; }
-        }
-
         @keyframes sparkle {
             0%, 100% {
                 transform: scale(1) rotate(0deg);
@@ -318,20 +354,6 @@
             }
         }
 
-        .btn-celebrate {
-            margin-top: 40px;
-            padding: 15px 40px;
-            font-size: 20px;
-            border-radius: 50px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            border: none;
-            color: #333;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
@@ -339,11 +361,6 @@
             50% {
                 transform: scale(1.05);
             }
-        }
-
-        .btn-celebrate:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
         }
 
         .countdown {
@@ -404,55 +421,6 @@
                 transform: scale(0);
             }
         }
-
-        /* Year digit styles for top/bottom 2025 */
-        .year {
-            font-size: 80px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            display: inline-block;
-            letter-spacing: 6px;
-            margin: 10px 0;
-        }
-
-        .year .digit {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .year .digit.last {
-            color: #FFD700;
-            text-shadow: 0 0 30px rgba(255,215,0,0.9);
-        }
-
-        .moving-digit {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 2.6s cubic-bezier(.2,.9,.3,1), opacity 0.5s ease;
-            will-change: transform, opacity;
-            color: #FFD700;
-            text-shadow: 0 0 30px rgba(255,215,0,0.9);
-            opacity: 0;
-            transform-origin: center;
-            font-weight: bold;
-        }
-        /* Responsive adjustments for phones */
-        @media (max-width: 600px) {
-            .main-container { padding: 20px; }
-            .greeting { font-size: 28px; letter-spacing: 1px; margin: 16px 0; }
-            .year-2025, .year { font-size: 44px; }
-            .year-2026 { font-size: 72px; }
-            .wishes { font-size: 16px; max-width: 95%; min-height: 120px; }
-            .wish-item { font-size: 16px; }
-            .btn-celebrate { padding: 12px 24px; font-size: 16px; }
-            .countdown { font-size: 18px; }
-            .sparkle { display: none; }
-            .glitter::after { display: none; }
-            .greeting, .year-2026 { text-shadow: none; }
-            #fireworks-canvas { opacity: 0.95; }
-        }
     </style>
 </head>
 <body>
@@ -462,16 +430,14 @@
     <div class="content-wrapper">
         <div class="main-container">
             <h1 class="greeting">
-                <span class="sparkle">✨</span>
-                <span class="glitter">CHÚC MỪNG NĂM MỚI</span>
-                <span class="sparkle">✨</span>
+                Chúc mừng năm mới
             </h1>
-
-            <div class="year single-year">
-                <span class="digit">2</span>
-                <span class="digit">0</span>
-                <span class="digit">2</span>
-                <span class="digit last">5</span>
+            
+            <div class="year-display">
+                <span class="year-digit">2</span>
+                <span class="year-digit">0</span>
+                <span class="year-digit">2</span>
+                <span class="year-digit" id="lastDigit">5</span>
             </div>
             
             <div class="wishes">
@@ -481,10 +447,6 @@
                 <div class="wish-item">❤️ Gia đình hạnh phúc, tình yêu viên mãn! ❤️</div>
                 <div class="wish-item">🚀 Mọi ước mơ đều thành hiện thực! 🚀</div>
             </div>
-            
-            <button class="btn btn-celebrate" onclick="celebrateMore()">
-                🎉 BẮN PHÁO HOA 🎉
-            </button>
             
             <div class="countdown">
                 🎊 Happy New Year 2026! 🎊
@@ -497,8 +459,7 @@
         // Tạo ngôi sao
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starsCount = window.innerWidth < 600 ? 40 : 100;
-            for (let i = 0; i < starsCount; i++) {
+            for (let i = 0; i < 100; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.width = Math.random() * 3 + 'px';
@@ -516,22 +477,73 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
+        class Rocket {
+            constructor(x) {
+                this.x = x;
+                this.y = canvas.height;
+                this.targetY = Math.random() * canvas.height * 0.4 + 50;
+                this.speed = 8;
+                this.trail = [];
+                this.exploded = false;
+                this.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            }
+
+            update() {
+                if (!this.exploded) {
+                    this.trail.push({ x: this.x, y: this.y, alpha: 1 });
+                    if (this.trail.length > 15) this.trail.shift();
+                    
+                    this.y -= this.speed;
+                    
+                    if (this.y <= this.targetY) {
+                        this.exploded = true;
+                        return new Firework(this.x, this.y);
+                    }
+                }
+                return null;
+            }
+
+            draw() {
+                if (!this.exploded) {
+                    // Vẽ đuôi tên lửa
+                    this.trail.forEach((point, index) => {
+                        ctx.beginPath();
+                        ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
+                        ctx.fillStyle = this.color;
+                        ctx.globalAlpha = (index / this.trail.length) * 0.8;
+                        ctx.fill();
+                    });
+                    
+                    // Vẽ đầu tên lửa
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FFF';
+                    ctx.globalAlpha = 1;
+                    ctx.fill();
+                }
+            }
+        }
+
         class Firework {
             constructor(x, y) {
                 this.x = x;
                 this.y = y;
                 this.particles = [];
-                const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F'];
-                const particleCount = window.innerWidth < 600 ? 50 : 100;
-
+                const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#FF1493', '#00FF00'];
+                const mainColor = colors[Math.floor(Math.random() * colors.length)];
+                const particleCount = 150;
+                
                 for (let i = 0; i < particleCount; i++) {
+                    const angle = (Math.PI * 2 * i) / particleCount;
+                    const speed = Math.random() * 6 + 2;
                     this.particles.push({
                         x: x,
                         y: y,
-                        vx: (Math.random() - 0.5) * 8,
-                        vy: (Math.random() - 0.5) * 8,
-                        color: colors[Math.floor(Math.random() * colors.length)],
-                        life: 1
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        color: Math.random() > 0.3 ? mainColor : colors[Math.floor(Math.random() * colors.length)],
+                        life: 1,
+                        size: Math.random() * 3 + 1
                     });
                 }
             }
@@ -540,8 +552,9 @@
                 this.particles.forEach(p => {
                     p.x += p.vx;
                     p.y += p.vy;
-                    p.vy += 0.1;
-                    p.life -= 0.01;
+                    p.vy += 0.15; // Trọng lực
+                    p.vx *= 0.98; // Ma sát
+                    p.life -= 0.012;
                 });
                 this.particles = this.particles.filter(p => p.life > 0);
             }
@@ -549,28 +562,43 @@
             draw() {
                 this.particles.forEach(p => {
                     ctx.beginPath();
-                    ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                     ctx.fillStyle = p.color;
                     ctx.globalAlpha = p.life;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = p.color;
                     ctx.fill();
+                    ctx.shadowBlur = 0;
                 });
             }
         }
 
         let fireworks = [];
+        let rockets = [];
 
-        function createFirework() {
+        function createRocket() {
             const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height * 0.5;
-            fireworks.push(new Firework(x, y));
+            rockets.push(new Rocket(x));
         }
 
         function animate() {
-            ctx.globalAlpha = 0.1;
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.globalAlpha = 0.15;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.globalAlpha = 1;
 
+            // Cập nhật và vẽ rockets
+            rockets.forEach((rocket, index) => {
+                const newFirework = rocket.update();
+                rocket.draw();
+                
+                if (newFirework) {
+                    fireworks.push(newFirework);
+                    rockets.splice(index, 1);
+                }
+            });
+
+            // Cập nhật và vẽ fireworks
             fireworks.forEach((fw, index) => {
                 fw.update();
                 fw.draw();
@@ -583,24 +611,9 @@
         }
 
         function celebrateMore() {
-            // Bắn 10 quả pháo hoa liên tiếp
+            // Bắn 10 tên lửa liên tiếp
             for (let i = 0; i < 10; i++) {
-                setTimeout(createFirework, i * 150);
-            }
-            
-            // Tạo hiệu ứng rung màn hình
-            document.body.style.animation = 'shake 0.5s';
-            setTimeout(() => {
-                document.body.style.animation = '';
-            }, 500);
-            
-            // Thêm class celebrating cho năm (nếu có)
-            const yearElem = document.querySelector('.single-year');
-            if (yearElem) {
-                yearElem.classList.add('celebrating');
-                setTimeout(() => {
-                    yearElem.classList.remove('celebrating');
-                }, 3000);
+                setTimeout(createRocket, i * 150);
             }
             
             // Tạo nhiều confetti hơn
@@ -610,25 +623,49 @@
         }
 
         // Tự động bắn pháo hoa
-        setInterval(createFirework, 1000);
+        setInterval(createRocket, 1500);
 
         // Khởi động
         createStars();
         animate();
 
-        // Sau 3 giây, thêm class celebrating cho 2026 để tạo hiệu ứng glow liên tục
-        setTimeout(() => {
-            const year2026 = document.querySelector('.year-2026');
-            if (year2026) {
-                year2026.classList.add('celebrating');
-            }
-        }, 3000);
+        // Hiệu ứng chuyển số 5 thành 6
+        function changeLastDigit() {
+            const lastDigit = document.getElementById('lastDigit');
+            lastDigit.classList.add('changing');
+            
+            setTimeout(() => {
+                lastDigit.textContent = '6';
+            }, 1000);
+            
+            setTimeout(() => {
+                lastDigit.classList.remove('changing');
+            }, 2000);
+        }
+
+        // Chạy animation chuyển số sau 5 giây
+        setTimeout(changeLastDigit, 5000);
+
+        // Lặp lại animation mỗi 15 giây
+        setInterval(() => {
+            const lastDigit = document.getElementById('lastDigit');
+            const currentDigit = lastDigit.textContent;
+            
+            lastDigit.classList.add('changing');
+            
+            setTimeout(() => {
+                lastDigit.textContent = currentDigit === '5' ? '6' : '5';
+            }, 1000);
+            
+            setTimeout(() => {
+                lastDigit.classList.remove('changing');
+            }, 2000);
+        }, 15000);
 
         // Tạo confetti
         function createConfetti() {
             const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A'];
-            const confettiCount = window.innerWidth < 600 ? 20 : 50;
-            for (let i = 0; i < confettiCount; i++) {
+            for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.position = 'fixed';
                 confetti.style.width = '10px';
@@ -653,49 +690,6 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
-
-        // Animate replacement: create a moving '6' from below and replace the last digit
-        function animateFiveToSix(delay = 2000) {
-            setTimeout(() => {
-                const lastDigit = document.querySelector('.single-year .digit.last');
-                if (!lastDigit) return;
-
-                const toRect = lastDigit.getBoundingClientRect();
-
-                const moving = document.createElement('div');
-                moving.className = 'moving-digit';
-                moving.textContent = '6';
-                document.body.appendChild(moving);
-
-                const cs = getComputedStyle(lastDigit);
-                moving.style.font = cs.font;
-                moving.style.fontSize = cs.fontSize;
-                moving.style.lineHeight = cs.lineHeight;
-                // start well below viewport for a slower rise
-                const startLeft = toRect.left;
-                const startTop = window.innerHeight + 220;
-                moving.style.left = startLeft + 'px';
-                moving.style.top = startTop + 'px';
-                // ensure transition matches CSS (in case of runtime override)
-                moving.style.transition = 'transform 2.6s cubic-bezier(.2,.9,.3,1), opacity 0.5s ease';
-                // make visible then move slowly
-                requestAnimationFrame(() => {
-                    const deltaY = toRect.top - startTop;
-                    moving.style.opacity = '1';
-                    moving.style.transform = `translate(0px, ${deltaY}px) scale(1)`;
-                });
-
-                moving.addEventListener('transitionend', () => {
-                    // set the last digit to 6 and remove the moving element
-                    lastDigit.textContent = '6';
-                    moving.style.opacity = '0';
-                    setTimeout(() => moving.remove(), 300);
-                }, { once: true });
-            }, delay);
-        }
-
-        // Run the digit animation shortly after load
-        animateFiveToSix(2500);
     </script>
 </body>
 </html>

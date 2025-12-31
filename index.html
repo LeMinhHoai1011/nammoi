@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Chúc Mừng Năm Mới 2026</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -10,18 +10,20 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
         }
 
         body {
             font-family: 'Arial', sans-serif;
-            overflow: hidden;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
             position: relative;
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
         }
 
         #fireworks-canvas {
@@ -158,11 +160,11 @@
         }
 
         .greeting {
-            font-size: 56px;
-            margin: 20px 0 15px 0;
+            font-size: 9vw;
+            margin: 2vh 0 1vh 0;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 0.1em;
             background: linear-gradient(45deg, 
                 #FFD700 0%, 
                 #FFA500 25%, 
@@ -181,6 +183,7 @@
             animation: goldShine 3s linear infinite, float3D 3s ease-in-out infinite;
             filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
             position: relative;
+            line-height: 1.2;
         }
 
         @keyframes goldShine {
@@ -202,10 +205,10 @@
         }
 
         .year-display {
-            font-size: 72px;
+            font-size: 15vw;
             font-weight: 900;
-            margin: 20px 0;
-            letter-spacing: 10px;
+            margin: 2vh 0;
+            letter-spacing: 0.15em;
             background: linear-gradient(45deg, 
                 #FFD700 0%, 
                 #FFA500 25%, 
@@ -226,7 +229,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 5px;
+            gap: 0.1em;
+            line-height: 1;
         }
 
         .year-digit {
@@ -268,14 +272,14 @@
         }
 
         .wishes {
-            font-size: 20px;
+            font-size: 3.5vw;
             max-width: 90%;
-            margin: 20px auto;
-            line-height: 1.8;
+            margin: 2vh auto;
+            line-height: 1.6;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             position: relative;
-            min-height: 80px;
+            min-height: 10vh;
         }
 
         .wish-item {
@@ -373,8 +377,8 @@
         }
 
         .countdown {
-            font-size: 22px;
-            margin-top: 20px;
+            font-size: 4vw;
+            margin-top: 2vh;
             animation: fadeIn 4s ease-out;
         }
 
@@ -419,84 +423,60 @@
         /* Responsive cho mobile */
         @media (max-width: 768px) {
             .greeting {
-                font-size: 32px;
-                letter-spacing: 2px;
-                margin: 15px 0 10px 0;
+                font-size: 7vw;
             }
 
             .year-display {
-                font-size: 52px;
-                letter-spacing: 6px;
-                margin: 15px 0;
+                font-size: 18vw;
             }
 
             .wishes {
-                font-size: 16px;
-                padding: 0 15px;
-                min-height: 70px;
-                max-width: 95%;
-            }
-
-            .wish-item {
-                font-size: 15px;
+                font-size: 3.8vw;
+                min-height: 12vh;
             }
 
             .countdown {
-                font-size: 18px;
-                margin-top: 15px;
-            }
-
-            .main-container {
-                padding: 15px;
+                font-size: 4.5vw;
             }
         }
 
         @media (max-width: 480px) {
             .greeting {
-                font-size: 26px;
-                letter-spacing: 1px;
+                font-size: 8vw;
             }
 
             .year-display {
-                font-size: 42px;
-                letter-spacing: 4px;
+                font-size: 20vw;
             }
 
             .wishes {
-                font-size: 14px;
-                min-height: 60px;
-            }
-
-            .wish-item {
-                font-size: 13px;
+                font-size: 4vw;
             }
 
             .countdown {
-                font-size: 16px;
+                font-size: 5vw;
             }
         }
 
-        @media (max-width: 360px) {
+        @media (orientation: landscape) and (max-height: 500px) {
             .greeting {
-                font-size: 22px;
+                font-size: 6vh;
+                margin: 1vh 0;
             }
 
             .year-display {
-                font-size: 36px;
-                letter-spacing: 3px;
+                font-size: 12vh;
+                margin: 1vh 0;
             }
 
             .wishes {
-                font-size: 13px;
-                min-height: 55px;
-            }
-
-            .wish-item {
-                font-size: 12px;
+                font-size: 2.5vh;
+                min-height: 8vh;
             }
 
             .countdown {
-                font-size: 15px;
+                font-size: 3vh;
+                margin-top: 1vh;
             }
         }
 
@@ -788,21 +768,10 @@
         function adjustForMobile() {
             const width = window.innerWidth;
             const height = window.innerHeight;
-            const mainContainer = document.querySelector('.main-container');
             
-            // Tính scale để fit vừa màn hình
-            let scale = 1;
-            
-            if (width <= 360 || height <= 640) {
-                scale = 0.8;
-            } else if (width <= 480 || height <= 740) {
-                scale = 0.85;
-            } else if (width <= 768) {
-                scale = 0.9;
-            }
-            
-            mainContainer.style.transform = `scale(${scale})`;
-            mainContainer.style.transformOrigin = 'center center';
+            // Đảm bảo canvas luôn fit màn hình
+            canvas.width = width;
+            canvas.height = height;
         }
 
         // Chạy khi load trang

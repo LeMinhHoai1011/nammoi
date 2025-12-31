@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Năm Mới 2026</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        #fireworks-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-container {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .year-2025 {
+            font-size: 80px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: fadeOutUp 3s ease-out forwards;
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeOutUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .arrow-down {
+            font-size: 60px;
+            animation: bounce 1.5s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .year-2026 {
+            font-size: 120px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            animation: zoomInGlow 3s ease-out forwards;
+            margin: 20px 0;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        @keyframes zoomInGlow {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: brightness(1.5);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.5);
+            }
+        }
+
+        .year-2026.celebrating {
+            animation: continuousGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes continuousGlow {
+            0%, 100% {
+                filter: brightness(1);
+                transform: scale(1);
+            }
+            50% {
+                filter: brightness(1.8);
+                transform: scale(1.05);
+            }
+        }
+
+        .greeting {
+            font-size: 48px;
+            margin: 30px 0;
+            animation: slideInRight 2s ease-out;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 
+                2px 2px 0px #FF6B6B,
+                4px 4px 0px #4ECDC4,
+                6px 6px 0px #45B7D1,
+                8px 8px 0px #FFA07A,
+                10px 10px 20px rgba(0, 0, 0, 0.5);
+            animation: float3D 3s ease-in-out infinite, slideInRight 2s ease-out;
+        }
+
+        @keyframes float3D {
+            0%, 100% {
+                transform: translateY(0px) rotateX(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotateX(10deg);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .wishes {
+            font-size: 24px;
+            max-width: 800px;
+            margin: 30px auto;
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            min-height: 150px;
+        }
+
+        .wish-item {
+            animation: slideWish 20s linear infinite;
+            white-space: nowrap;
+            display: block;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .wish-item:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .wish-item:nth-child(2) {
+            animation-delay: 4s;
+        }
+        
+        .wish-item:nth-child(3) {
+            animation-delay: 8s;
+        }
+        
+        .wish-item:nth-child(4) {
+            animation-delay: 12s;
+        }
+        
+        .wish-item:nth-child(5) {
+            animation-delay: 16s;
+        }
+
+        @keyframes slideWish {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1.5s infinite;
+        }
+
+        /* Glitter text effect */
+        .glitter {
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(90deg, #ffffff 0%, #FFD700 20%, #FF6B6B 40%, #4ECDC4 60%, #ffffff 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            animation: glitterMove 3s linear infinite;
+        }
+
+        .glitter::after {
+            content: '';
+            position: absolute;
+            left: -60%;
+            top: 0;
+            width: 220%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shimmer 2s linear infinite;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        @keyframes glitterMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: -200% 0%; }
+        }
+
+        @keyframes shimmer {
+            0% { left: -60%; opacity: 0; }
+            30% { opacity: 1; }
+            100% { left: 160%; opacity: 0; }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3) rotate(180deg);
+                opacity: 0.7;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confetti-fall linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .btn-celebrate {
+            margin-top: 40px;
+            padding: 15px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border: none;
+            color: #333;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .btn-celebrate:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        }
+
+        .countdown {
+            font-size: 28px;
+            margin-top: 30px;
+            animation: fadeIn 4s ease-out;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translateX(-5px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translateX(5px);
+            }
+        }
+
+        .arrow-down {
+            animation: bounce 1.5s infinite, fadeOutScale 3s ease-out forwards;
+        }
+
+        @keyframes fadeOutScale {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        /* Year digit styles for top/bottom 2025 */
+        .year {
+            font-size: 80px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            display: inline-block;
+            letter-spacing: 6px;
+            margin: 10px 0;
+        }
+
+        .year .digit {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .year .digit.last {
+            color: #FFD700;
+            text-shadow: 0 0 30px rgba(255,215,0,0.9);
+        }
+
+        .moving-digit {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 2.6s cubic-bezier(.2,.9,.3,1), opacity 0.5s ease;
+            will-change: transform, opacity;
+            color: #FFD700;
+            text-shadow: 0 0 30px rgba(255,215,0,0.9);
+            opacity: 0;
+            transform-origin: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <canvas id="fireworks-canvas"></canvas>
+    
+    <div class="content-wrapper">
+        <div class="main-container">
+            <h1 class="greeting">
+                <span class="sparkle">✨</span>
+                <span class="glitter">CHÚC MỪNG NĂM MỚI</span>
+                <span class="sparkle">✨</span>
+            </h1>
+
+            <div class="year single-year">
+                <span class="digit">2</span>
+                <span class="digit">0</span>
+                <span class="digit">2</span>
+                <span class="digit last">5</span>
+            </div>
+            
+            <div class="wishes">
+                <div class="wish-item">🎊 Chúc bạn một năm mới tràn đầy sức khỏe và hạnh phúc! 🎊</div>
+                <div class="wish-item">💰 Vạn sự như ý, tiền vào như nước! 💰</div>
+                <div class="wish-item">🌟 Thành công rực rỡ, thăng tiến vượt bậc! 🌟</div>
+                <div class="wish-item">❤️ Gia đình hạnh phúc, tình yêu viên mãn! ❤️</div>
+                <div class="wish-item">🚀 Mọi ước mơ đều thành hiện thực! 🚀</div>
+            </div>
+            
+            <button class="btn btn-celebrate" onclick="celebrateMore()">
+                🎉 BẮN PHÁO HOA 🎉
+            </button>
+            
+            <div class="countdown">
+                🎊 Happy New Year 2026! 🎊
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Tạo ngôi sao
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Pháo hoa
+        const canvas = document.getElementById('fireworks-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Firework {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.particles = [];
+                const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F'];
+                const particleCount = 100;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    this.particles.push({
+                        x: x,
+                        y: y,
+                        vx: (Math.random() - 0.5) * 8,
+                        vy: (Math.random() - 0.5) * 8,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        life: 1
+                    });
+                }
+            }
+
+            update() {
+                this.particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.1;
+                    p.life -= 0.01;
+                });
+                this.particles = this.particles.filter(p => p.life > 0);
+            }
+
+            draw() {
+                this.particles.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.life;
+                    ctx.fill();
+                });
+            }
+        }
+
+        let fireworks = [];
+
+        function createFirework() {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height * 0.5;
+            fireworks.push(new Firework(x, y));
+        }
+
+        function animate() {
+            ctx.globalAlpha = 0.1;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalAlpha = 1;
+
+            fireworks.forEach((fw, index) => {
+                fw.update();
+                fw.draw();
+                if (fw.particles.length === 0) {
+                    fireworks.splice(index, 1);
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        function celebrateMore() {
+            // Bắn 10 quả pháo hoa liên tiếp
+            for (let i = 0; i < 10; i++) {
+                setTimeout(createFirework, i * 150);
+            }
+            
+            // Tạo hiệu ứng rung màn hình
+            document.body.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                document.body.style.animation = '';
+            }, 500);
+            
+            // Thêm class celebrating cho năm (nếu có)
+            const yearElem = document.querySelector('.single-year');
+            if (yearElem) {
+                yearElem.classList.add('celebrating');
+                setTimeout(() => {
+                    yearElem.classList.remove('celebrating');
+                }, 3000);
+            }
+            
+            // Tạo nhiều confetti hơn
+            for (let i = 0; i < 3; i++) {
+                setTimeout(createConfetti, i * 300);
+            }
+        }
+
+        // Tự động bắn pháo hoa
+        setInterval(createFirework, 1000);
+
+        // Khởi động
+        createStars();
+        animate();
+
+        // Sau 3 giây, thêm class celebrating cho 2026 để tạo hiệu ứng glow liên tục
+        setTimeout(() => {
+            const year2026 = document.querySelector('.year-2026');
+            if (year2026) {
+                year2026.classList.add('celebrating');
+            }
+        }, 3000);
+
+        // Tạo confetti
+        function createConfetti() {
+            const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.opacity = Math.random();
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear`;
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        setInterval(createConfetti, 3000);
+        createConfetti();
+
+        // Responsive
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Animate replacement: create a moving '6' from below and replace the last digit
+        function animateFiveToSix(delay = 2000) {
+            setTimeout(() => {
+                const lastDigit = document.querySelector('.single-year .digit.last');
+                if (!lastDigit) return;
+
+                const toRect = lastDigit.getBoundingClientRect();
+
+                const moving = document.createElement('div');
+                moving.className = 'moving-digit';
+                moving.textContent = '6';
+                document.body.appendChild(moving);
+
+                const cs = getComputedStyle(lastDigit);
+                moving.style.font = cs.font;
+                moving.style.fontSize = cs.fontSize;
+                moving.style.lineHeight = cs.lineHeight;
+                // start well below viewport for a slower rise
+                const startLeft = toRect.left;
+                const startTop = window.innerHeight + 220;
+                moving.style.left = startLeft + 'px';
+                moving.style.top = startTop + 'px';
+                // ensure transition matches CSS (in case of runtime override)
+                moving.style.transition = 'transform 2.6s cubic-bezier(.2,.9,.3,1), opacity 0.5s ease';
+                // make visible then move slowly
+                requestAnimationFrame(() => {
+                    const deltaY = toRect.top - startTop;
+                    moving.style.opacity = '1';
+                    moving.style.transform = `translate(0px, ${deltaY}px) scale(1)`;
+                });
+
+                moving.addEventListener('transitionend', () => {
+                    // set the last digit to 6 and remove the moving element
+                    lastDigit.textContent = '6';
+                    moving.style.opacity = '0';
+                    setTimeout(() => moving.remove(), 300);
+                }, { once: true });
+            }, delay);
+        }
+
+        // Run the digit animation shortly after load
+        animateFiveToSix(2500);
+    </script>
+</body>
+</html>
